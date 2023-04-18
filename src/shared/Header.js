@@ -2,16 +2,23 @@ import React from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from "react-router-dom";
+import "../Style/Header.css"
+
 const Header = () => {
   return <>
-     <Navbar bg="dark" variant="dark">
+    <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Navbar.Brand >
+          <Link to={"/"} className="nav-link">MedsCat</Link>
+          </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Link to={"/ManageMedicines"} className="nav-link">Medicines</Link>
+            <Link to={"/login"} className="nav-link">Login</Link>
+            <Link to={"/register"} className="nav-link">Register</Link>
+
           </Nav>
+          <Link to={"/test"} className="sign-in">Sign in</Link>
         </Container>
       </Navbar>
   </>;
