@@ -3,7 +3,10 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
 import App from "./App";
-import ManageMed from "./ManageMedicines/ManageMed";
+import ManageMedicine from "./pages/manage-medicine/ManageMedicine";
+import AddMedicine from "./pages/manage-medicine/AddMedicine";
+import UpdateMedicine from "./pages/manage-medicine/UpdateMedicine";
+
 export const routes = createBrowserRouter([
   {
     path: "",
@@ -13,10 +16,10 @@ export const routes = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
-      {
-        path: "/ManageMedicines",
-        element: <ManageMed/>,
-      },
+      // {
+      //   path: ":id",
+      //   element: <MedicineDetails/>,
+      // },
       {
         path: "/login",
         element: <Login />,
@@ -26,8 +29,21 @@ export const routes = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/test",
-        element: <Register />,
+        path: "/manage-medicine",
+        children: [
+          {
+            path: "",
+            element: <ManageMedicine />,
+          },
+          {
+            path: "add",
+            element: <AddMedicine />,
+          },
+          {
+            path: ":id",
+            element: <UpdateMedicine />,
+          },
+        ],
       },
     ],
   },
@@ -35,5 +51,4 @@ export const routes = createBrowserRouter([
     path: "*",
     element: <Navigate to={"/"}/>,
   },
-  
 ]);
