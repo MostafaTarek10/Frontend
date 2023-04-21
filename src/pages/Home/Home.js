@@ -1,5 +1,5 @@
 import React from "react";
-import MedCat from "../../components/MedCat";
+import MedCat from "../../Components/MedCat";
 import "../Home/Home.css";
 import Form from "react-bootstrap/Form";
 
