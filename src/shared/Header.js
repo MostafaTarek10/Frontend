@@ -16,9 +16,11 @@ const Header = () => {
             <Link to={"/ManageMedicines"} className="nav-link">Medicines</Link>
             <Link to={"/login"} className="nav-link">Login</Link>
             <Link to={"/register"} className="nav-link">Register</Link>
+            <Link to={"/MedDetails"} className="nav-link">Med-Details</Link>
+            <Link to={"/Manage-Cat"} className="nav-link">ManageCategories</Link>
 
           </Nav>
-          <Link to={"/test"} className="sign-in">Sign in</Link>
+          <Link to={"/test"} className="sign-in">Log out</Link>
         </Container>
       </Navbar>
   </>;

@@ -22,11 +22,10 @@ const MedCat = () => {
         <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
     </ListGroup>
     <Card.Body>
-        <Link to={'/5'} className='Card'>Show More</Link>
+        <Link to={'/ManageMedicines'} className='Card'>Show More</Link>
     </Card.Body>
     </Card>
         </div>
     );
 };
-
 export default MedCat;

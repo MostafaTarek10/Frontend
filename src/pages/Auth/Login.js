@@ -1,16 +1,24 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-
+import Alert from 'react-bootstrap/Alert';
 
 import "../../Style/Login.css"
 const Login = () => {
-  return <div>
-      <Form className="login-container">
+  return <div className="login-container">
+
         <h1>Login Form</h1>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Alert variant={"danger"} >
+            This is a alert—check it out!
+        </Alert>
+        <Alert variant={"success"} >
+            This is a alert—check it out!
+        </Alert>
+
+    <Form>
+      <Form.Group className="mb-3">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Please Enter Your Email" />
+        <Form.Control type="ematil" placeholder="Please Enter Your Email" />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">

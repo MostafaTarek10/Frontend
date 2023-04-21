@@ -1,0 +1,23 @@
+import React from 'react';
+import "../Style/MedDetails.css"
+
+const MedDetails = () => {
+    return (
+        <div className='Med-Details-container p-5'>
+            <div className='row'>
+                <div className='col-4'>
+                    <img className='Med-image' src='https://picsum.photos/200/300' alt=''/>
+                </div>
+                <div className='col-8'>
+                    <h3>Medicine Name</h3>
+                    <p className='Details'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p className='Price'>Price: <span>20$</span></p>
+                    <button className='Buy'>Buy Now</button>
+                </div>
+            </div>
+            
+        </div>
+    );
+};
+
+export default MedDetails;
