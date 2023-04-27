@@ -57,7 +57,12 @@
 }
 /* END LANDING */
 
-
+/* START MEDICINE LIST */
+.MedList {
+    padding: 20px;
+    margin: 20px 0 20px 0;
+}
+/* End MEDICINE LIST */
 /* CONTACT */
 .contact {
     padding-top: 60px;
@@ -128,3 +133,4 @@
 }
 
 /* CONTACT */
+

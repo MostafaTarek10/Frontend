@@ -1,7 +1,8 @@
 import React from "react";
-import MedCat from "../../components/MedCat";
+import MedCat from "../../Components/MedCat";
 import "../Home/Home.css";
 import Form from "react-bootstrap/Form";
+import MedicineList from "../../Components/MedicineList";
 
 const Home = () => {
   return (
@@ -39,7 +40,7 @@ const Home = () => {
           <button className="Search">Search</button>
         </Form.Group>
       </Form>
-      {/* MEDICINES CATEGORIES */}
+      {/*  CATEGORIES LIST */}
       <div className="row">
         <div className="col-xs-6 col-sm-3 med-cat-container">
           <MedCat />
@@ -54,6 +55,25 @@ const Home = () => {
           <MedCat />
         </div>
       </div>
+
+      {/* Medicine List */}
+      <div className="MedList"></div>
+      <h1 style={{ fontWeight: "bold" }}>Medicine List</h1>
+      <div className="row">
+        <div className="col-xs-6 col-sm-3 med-cat-container">
+          <MedicineList />
+        </div>
+        <div className="col-xs-6 col-sm-3 med-cat-container">
+          <MedicineList />
+        </div>
+        <div className="col-xs-6 col-sm-3 med-cat-container">
+          <MedicineList />
+        </div>
+        <div className="col-xs-6 col-sm-3 med-cat-container">
+          <MedicineList />
+        </div>
+      </div>
+
       {/* CONTACT */}
       <div className="contact">
         <div className="main-heading">

@@ -6,11 +6,9 @@ import { Link } from "react-router-dom";
 import "../Style/Header.css";
 
 const Header = () => {
-  let Logout=()=>{
-    <div>
-      Logout
-    </div>
-  }
+  let Logout = () => {
+    <div>Logout</div>;
+  };
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -21,14 +19,17 @@ const Header = () => {
             </Link>
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Link to={"/"} className="nav-link">
+            {/* <Link to={"/"} className="nav-link">
               Medicine list
-            </Link>
+            </Link> */}
             <Link to={"/login"} className="nav-link">
               Login
             </Link>
             <Link to={"/register"} className="nav-link">
               Register
+            </Link>
+            <Link to={"/Manage-Cat"} className="nav-link">
+              ManageCategories
             </Link>
             <Link to={"/manage-medicine"} className="nav-link">
               Manage Medicine
