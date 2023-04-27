@@ -3,11 +3,14 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
 import App from "./App";
-import ManageMed from "./ManageMedicines/ManageMed";
-import MedDetails from "./MedDetails/MedDetails";
+import ManageMedicine from "./pages/manage-medicine/ManageMedicine";
+import AddMedicine from "./pages/manage-medicine/AddMedicine";
+import UpdateMedicine from "./pages/manage-medicine/UpdateMedicine";
 import ManageCategories from "./pages/ManageCategories/ManageCategories";
 import AddCategories from "./pages/ManageCategories/AddCategories";
 import UpdateCategories from "./pages/ManageCategories/UpdateCategories";
+import MedDetails from "./pages/MedDetails/MedDetails";
+import CategorieDetails from "./pages/CategorieDetails/CategorieDetails";
 export const routes = createBrowserRouter([
   {
     path: "",
@@ -17,10 +20,10 @@ export const routes = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
-      {
-        path: "/ManageMedicines",
-        element: <ManageMed/>,
-      },
+      // {
+      //   path: ":id",
+      //   element: <MedicineDetails/>,
+      // },
       {
         path: "/login",
         element: <Login />,
@@ -30,32 +33,60 @@ export const routes = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/MedDetails",
-        element: <MedDetails/>,
+        path: ":id",
+        element: <MedDetails />,
+      },
+      {
+        path: ":id",
+        element: <CategorieDetails />,
+      },
+
+      // {
+      //   path: "MedicineDetails",
+      //   element: <MedDeta ,
+      // },
+      {
+        path: "/manage-medicine",
+        children: [
+          {
+            path: "",
+            element: <ManageMedicine />,
+          },
+          {
+            path: "add",
+            element: <AddMedicine />,
+          },
+          {
+            path: ":id",
+            element: <UpdateMedicine />,
+          },
+          // {
+          //   path: "show",
+          //   element: <MedDetails/>,
+          // },
+        ],
       },
       {
         path: "/Manage-Cat",
         children: [
           {
-            path:"" ,
-            element: <ManageCategories/>
+            path: "",
+            element: <ManageCategories />,
           },
           {
-            path:"add" ,
-            element: <AddCategories/>,
+            path: "add",
+            element: <AddCategories />,
           },
           {
-            path:"update" ,
-            element: <UpdateCategories/>,
-          }
-
-        ]
+            path: "update",
+            element: <UpdateCategories />,
+          },
+        ],
       },
     ],
   },
   {
     path: "*",
-    element: <Navigate to={"/"}/>,
+    element: <Navigate to={"/"} />,
   },
-  
 ]);

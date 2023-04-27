@@ -18,8 +18,6 @@ const ManageCategories = () => {
             This is a alert—check it out!
         </Alert>
 
-
-
 <Table striped bordered hover>
     <thead>
         <tr>

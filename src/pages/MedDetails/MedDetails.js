@@ -1,6 +1,5 @@
 import React from 'react';
-import "../Style/MedDetails.css"
-
+import "../../Style/MedDetails.css"
 const MedDetails = () => {
     return (
         <div className='Med-Details-container p-5'>

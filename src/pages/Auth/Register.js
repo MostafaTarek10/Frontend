@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 const Register = () => {
   return <div>
     <Form className="login-container">
-        <h1>Registeration Form</h1>
+        <h1>Registration Form</h1>
         <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Name</Form.Label>
         <Form.Control type="name" placeholder="Please Enter Your Name" required />
