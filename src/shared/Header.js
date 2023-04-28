@@ -1,27 +1,41 @@
 import React from "react";
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
-import "../Style/Header.css"
+import "../Style/Header.css";
 
 const Header = () => {
-  return <>
-    <Navbar bg="dark" variant="dark">
+  return (
+    <>
+      <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand >
-          <Link to={"/"} className="nav-link">MedsCat</Link>
+          <Navbar.Brand>
+            <Link to={"/"} className="nav-link">
+              MedsCat
+            </Link>
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Link to={"/ManageMedicines"} className="nav-link">Medicines</Link>
-            <Link to={"/login"} className="nav-link">Login</Link>
-            <Link to={"/register"} className="nav-link">Register</Link>
-
+            <Link to={"/ManageMedicines"} className="nav-link">
+              Medicines
+            </Link>
+            <Link to={"/login"} className="nav-link">
+              Login
+            </Link>
+            <Link to={"/register"} className="nav-link">
+              Register
+            </Link>
+            <Link to={"/Manage-Patient"} className="nav-link">
+              Manage Patient
+            </Link>
           </Nav>
-          <Link to={"/test"} className="sign-in">Sign in</Link>
+          <Link to={"/test"} className="sign-in">
+            Sign in
+          </Link>
         </Container>
       </Navbar>
-  </>;
+    </>
+  );
 };
 
 export default Header;
