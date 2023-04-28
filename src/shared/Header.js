@@ -34,6 +34,9 @@ const Header = () => {
             <Link to={"/manage-medicine"} className="nav-link">
               Manage Medicine
             </Link>
+            <Link to={"/Manage-Patient"} className="nav-link">
+              Manage Patient
+            </Link>
           </Nav>
           <Nav className="logout">
             <Nav.Link onClick={Logout}>Logout</Nav.Link>
