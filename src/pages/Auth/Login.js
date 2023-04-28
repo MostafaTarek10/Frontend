@@ -2,8 +2,8 @@ import React from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
-
 import "../../Style/Login.css"
+
 const Login = () => {
   return <div className="login-container">
 
@@ -18,7 +18,7 @@ const Login = () => {
     <Form>
       <Form.Group className="mb-3">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="ematil" placeholder="Please Enter Your Email" />
+        <Form.Control type="email" placeholder="Please Enter Your Email" />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
