@@ -81,7 +81,7 @@ const ManageMedicine = () => {
               <Link to={"5"} className="btn btn-sm btn-primary ">
                 Update
               </Link>
-              <Link to={"/5"} className="btn btn-sm btn-info mx-2">
+              <Link to={"show"} className="btn btn-sm btn-info mx-2">
                 Show
               </Link>
               <button className="btn btn-sm btn-danger">Delete</button>

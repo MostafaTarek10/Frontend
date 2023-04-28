@@ -60,10 +60,10 @@ export const routes = createBrowserRouter([
             path: ":id",
             element: <UpdateMedicine />,
           },
-          // {
-          //   path: "show",
-          //   element: <MedDetails/>,
-          // },
+          {
+            path: ":id",
+            element: <MedDetails />,
+          },
         ],
       },
       {
@@ -80,6 +80,10 @@ export const routes = createBrowserRouter([
           {
             path: "update",
             element: <UpdateCategories />,
+          },
+          {
+            path: ":id",
+            element: <CategorieDetails />,
           },
         ],
       },
