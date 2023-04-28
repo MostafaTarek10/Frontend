@@ -6,32 +6,41 @@ import { Link } from "react-router-dom";
 import "../Style/Header.css";
 
 const Header = () => {
+  let Logout = () => {
+    <div>Logout</div>;
+  };
   return (
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand>
             <Link to={"/"} className="nav-link">
-              MedsCat
+              Medicine categorize
             </Link>
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Link to={"/ManageMedicines"} className="nav-link">
-              Medicines
-            </Link>
+            {/* <Link to={"/"} className="nav-link">
+              Medicine list
+            </Link> */}
             <Link to={"/login"} className="nav-link">
               Login
             </Link>
             <Link to={"/register"} className="nav-link">
               Register
             </Link>
+            <Link to={"/Manage-Cat"} className="nav-link">
+              ManageCategories
+            </Link>
+            <Link to={"/manage-medicine"} className="nav-link">
+              Manage Medicine
+            </Link>
             <Link to={"/Manage-Patient"} className="nav-link">
               Manage Patient
             </Link>
           </Nav>
-          <Link to={"/test"} className="sign-in">
-            Sign in
-          </Link>
+          <Nav className="logout">
+            <Nav.Link onClick={Logout}>Logout</Nav.Link>
+          </Nav>
         </Container>
       </Navbar>
     </>
