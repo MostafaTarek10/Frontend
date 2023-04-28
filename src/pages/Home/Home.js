@@ -1,8 +1,8 @@
 import React from "react";
-import MedCat from "../../Components/MedCat";
+import MedCat from "../../components/MedCat.js";
 import "../Home/Home.css";
 import Form from "react-bootstrap/Form";
-import MedicineList from "../../Components/MedicineList";
+import MedicineList from "../../components/MedicineList.js";
 
 const Home = () => {
   return (

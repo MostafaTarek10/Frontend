@@ -1,10 +1,17 @@
 import React from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';  
+import Alert from 'react-bootstrap/Alert';
 const Register = () => {
   return <div>
     <Form className="login-container">
         <h1>Registration Form</h1>
+        <Alert variant={"danger"} >
+            This is a alert—check it out!
+        </Alert>
+        <Alert variant={"success"} >
+            This is a alert—check it out!
+        </Alert>
         <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Name</Form.Label>
         <Form.Control type="name" placeholder="Please Enter Your Name" required />
