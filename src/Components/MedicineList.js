@@ -1,22 +1,20 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import "../Style/MedList.css";
+import { Link } from "react-router-dom";
 
-const MedicineList = () => {
+const MedicineList = (props) => {
   return (
     <Card style={{ width: "18rem" }}>
       <Card.Body>
-        <Card.Title className="title">Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
+        <Card.Title className="title"> {props.name} </Card.Title>
+        <Card.Text>{props.description}</Card.Text>
         <Card.Link href="#" className="Card-Link">
           Buy Now
         </Card.Link>
-        <Card.Link href="#" className="Another-Link">
+        <Link className="Another-Link" to={"/" + props.id}>
           Show Details
-        </Card.Link>
+        </Link>
       </Card.Body>
     </Card>
   );

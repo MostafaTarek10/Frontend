@@ -1,10 +1,53 @@
-import React from "react";
-import MedCat from "../../components/MedCat.js";
+import React, { useState, useEffect } from "react";
+import MedCat from "../../Components/MedCat";
 import "../Home/Home.css";
 import Form from "react-bootstrap/Form";
-import MedicineList from "../../components/MedicineList.js";
-
+import axios from "axios";
+import Spinner from "react-bootstrap/Spinner";
+import MedicineList from "../../Components/MedicineList";
+import Alert from "react-bootstrap/Alert";
 const Home = () => {
+  const [Medicine, setMedicines] = useState({
+    loading: true,
+    results: [],
+    err: null,
+    reload: 0,
+  });
+
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    setMedicines({ ...Medicine, loading: true });
+    axios
+      .get("http://localhost:4000/admin/search", {
+        params: {
+          search: search,
+        },
+      })
+      .then((resp) => {
+        console.log(resp);
+        setMedicines({
+          ...Medicine,
+          results: resp.data,
+          loading: false,
+          err: null,
+        });
+      })
+
+      .catch((err) => {
+        setMedicines({
+          ...Medicine,
+          loading: false,
+          err: " something went wrong, please try again later ! ",
+        });
+      });
+  }, [Medicine.reload]);
+
+  const searchMedicines = (e) => {
+    e.preventDefault();
+    setMedicines({ ...Medicine, reload: Medicine.reload + 1 });
+  };
+
   return (
     <div className="home-container  ">
       {/* FOR SOME PARAGRAPHS */}
@@ -31,50 +74,79 @@ const Home = () => {
         </div>
       </div>
       {/* For LAYOUT */}
+      {/* Loader  */}
+      {Medicine.loading === true && (
+        <div className="text-center">
+          <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        </div>
+      )}
       {/* FOR SEARCH */}
-
-      <h1 style={{ fontWeight: "bold" }}>Medicine Categories :-</h1>
-      <Form>
-        <Form.Group className="frm-group">
-          <Form.Control type="text" placeholder="What are you looking for?" />
-          <button className="Search">Search</button>
-        </Form.Group>
-      </Form>
-      {/*  CATEGORIES LIST */}
-      <div className="row">
-        <div className="col-xs-6 col-sm-3 med-cat-container">
-          <MedCat />
-        </div>
-        <div className="col-xs-6 col-sm-3 med-cat-container">
-          <MedCat />
-        </div>
-        <div className="col-xs-6 col-sm-3 med-cat-container">
-          <MedCat />
-        </div>
-        <div className="col-xs-6 col-sm-3 med-cat-container">
-          <MedCat />
-        </div>
-      </div>
-
-      {/* Medicine List */}
-      <div className="MedList"></div>
-      <h1 style={{ fontWeight: "bold" }}>Medicine List</h1>
-      <div className="row">
-        <div className="col-xs-6 col-sm-3 med-cat-container">
-          <MedicineList />
-        </div>
-        <div className="col-xs-6 col-sm-3 med-cat-container">
-          <MedicineList />
-        </div>
-        <div className="col-xs-6 col-sm-3 med-cat-container">
-          <MedicineList />
-        </div>
-        <div className="col-xs-6 col-sm-3 med-cat-container">
-          <MedicineList />
-        </div>
-      </div>
-
-      {/* CONTACT */}
+      {Medicine.loading === false && Medicine.err == null && (
+        <>
+          <Form onSubmit={searchMedicines}>
+            <Form.Group className="frm-group">
+              <Form.Control
+                type="text"
+                placeholder="What are you looking for?"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              <button className="Search">Search</button>
+            </Form.Group>
+          </Form>
+          {/* Medicine List */}
+          <div className="MedList">
+            <h1 style={{ fontWeight: "bold" }}>Medicine List</h1>
+            <div className="row">
+              {Medicine.results.map((Medicine) => (
+                <div
+                  className="col-xs-6 col-sm-3 med-cat-container"
+                  key={Medicine.id}
+                >
+                  <MedicineList
+                    name={Medicine.name}
+                    description={Medicine.description}
+                    price={Medicine.price}
+                    expirationDate={Medicine.expirationDate}
+                    id={Medicine.id}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          {Medicine.loading === false &&
+            Medicine.err == null &&
+            Medicine.results.length === 0 && (
+              <Alert variant={"danger"}>
+                There is No Medicine with that name, Pleae come back later
+              </Alert>
+            )}
+          {/*  CATEGORIES LIST */}
+          <h1 style={{ fontWeight: "bold" }}>Medicine Categories :-</h1>
+          <div className="row">
+            <div className="col-xs-6 col-sm-3 med-cat-container">
+              <MedCat />
+            </div>
+            <div className="col-xs-6 col-sm-3 med-cat-container">
+              <MedCat />
+            </div>
+            <div className="col-xs-6 col-sm-3 med-cat-container">
+              <MedCat />
+            </div>
+            <div className="col-xs-6 col-sm-3 med-cat-container">
+              <MedCat />
+            </div>
+          </div>
+        </>
+      )}
+      ;
+      {/* IF THERE IS AN ERROR
+      {Medicine.loading === false && Medicine.err == null && (
+        <Alert variant={"danger"}>{Medicine.err}</Alert>
+      )} */}
+      ;{/* CONTACT */}
       <div className="contact">
         <div className="main-heading">
           <h2>Contact Us</h2>
