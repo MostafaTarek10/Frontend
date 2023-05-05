@@ -9,9 +9,6 @@ const MedicineList = (props) => {
       <Card.Body>
         <Card.Title className="title"> {props.name} </Card.Title>
         <Card.Text>{props.description}</Card.Text>
-        <Card.Link href="#" className="Card-Link">
-          Buy Now
-        </Card.Link>
         <Link className="Another-Link" to={"/" + props.id}>
           Show Details
         </Link>
