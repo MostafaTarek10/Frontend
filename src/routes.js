@@ -15,6 +15,8 @@ import ManagePatient from "./pages/Manage-Patient/ManagePatient";
 import CrearePatient from "./pages/Manage-Patient/CrearePatient";
 import ReadPatient from "./pages/Manage-Patient/ReadPatient";
 import UpdatePatient from "./pages/Manage-Patient/UpdatePatient";
+import Guest from "./middleware/Guest";
+import Admin from "./middleware/Admin";
 
 export const routes = createBrowserRouter([
   {
@@ -29,14 +31,21 @@ export const routes = createBrowserRouter([
       //   path: ":id",
       //   element: <MedicineDetails/>,
       // },
+      // Guest middleware
       {
-        path: "/login",
-        element: <Login />,
+        element: <Guest />,
+        children: [
+          {
+            path: "/login",
+            element: <Login />,
+          },
+          {
+            path: "/register",
+            element: <Register />,
+          },
+        ],
       },
-      {
-        path: "/register",
-        element: <Register />,
-      },
+
       {
         path: ":id",
         element: <MedDetails />,
@@ -52,6 +61,7 @@ export const routes = createBrowserRouter([
       // },
       {
         path: "/manage-medicine",
+        element: <Admin />,
         children: [
           {
             path: "",
@@ -73,6 +83,7 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/Manage-Cat",
+        element: <Admin />,
         children: [
           {
             path: "",
@@ -94,6 +105,7 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/Manage-Patient",
+        element: <Admin />,
         children: [
           {
             path: "",
