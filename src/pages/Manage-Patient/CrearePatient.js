@@ -49,14 +49,13 @@ import Alert from "react-bootstrap/Alert";
 import { getAuthUser } from "../../helper/Storage";
 import axios from "axios";
 
-const AddMedicine = () => {
+const AddPatient = () => {
   const auth = getAuthUser();
-  const [medicine, setMedicines] = useState({
+  const [patient, setpatient] = useState({
     name: "",
-    description: "",
-    price: "",
-    expirationDate: "",
-    categoryId : "",
+    email: "",
+    password: "",
+    Phone: "",
     err: "",
     loading: false,
     success: null,
@@ -64,36 +63,37 @@ const AddMedicine = () => {
 
   // const image = useRef(null);
 
-  const createMedicine = (e) => {
+  const createPatient = (e) => {
     e.preventDefault();
 
-    setMedicines({ ...medicine, loading: true });
+    setpatient
+({ ...patient, loading: true });
 
 
     axios
-      .post("http://localhost:4000/admin/createMed", {
-        name: medicine.name,
-        description: medicine.description,
-        price: medicine.price,
-        expirationDate: medicine.expirationDate,
-        categoryId : medicine.categoryId,
+      .post("http://localhost:4000/admin/createPatient", {
+        name: patient.name,
+        email: patient.email,
+        password: patient.password,
+        Phone: patient.Phone,
       })
       .then((resp) => {
-        setMedicines({
+        setpatient
+    ({
           name: "",
-          description: "",
-          price:"",
-          expirationDate:"",
-          categoryId : "",
+          email: "",
+          password: "",
+          Phone: "",
           err: null,
           loading: false,
-          success: "medicine Created Successfully !",
+          success: "Pateint Created Successfully !",
         });
         // image.current.value = null;
       })
       .catch((err) => {
-        setMedicines({
-          ...medicine,
+        setpatient
+    ({
+          ...patient,
           loading: false,
           success: null,
           err: "Something went wrong, please try again later !",
@@ -103,84 +103,73 @@ const AddMedicine = () => {
 
   return (
     <div className="login-container">
-      <h1>Add New medicine Form</h1>
+      <h1>Add New Pateint Form</h1>
 
-      {medicine.err && (
+      {patient.err && (
         <Alert variant="danger" className="p-2">
-          {medicine.err}
+          {patient.err}
         </Alert>
       )}
 
-      {medicine.success && (
+      {patient.success && (
         <Alert variant="success" className="p-2">
-          {medicine.success}
+          {patient.success}
         </Alert>
       )}
 
-      <Form onSubmit={createMedicine}>
+      <Form onSubmit={createPatient}>
         <Form.Group className="mb-3">
           <Form.Control
-            value={medicine.name}
-            onChange={(e) => setMedicines({ ...medicine, name: e.target.value })}
+            value={patient.name}
+            onChange={(e) => setpatient({ ...patient, name: e.target.value })}
             type="text"
             required
-            placeholder="medicine Name"
+            placeholder="patient Name"
           />
         </Form.Group>
         
         <Form.Group className="mb-3">
           <Form.Control
-            value={medicine.categoryId}
-            onChange={(e) => setMedicines({ ...medicine, categoryId: e.target.value })}
+            value={patient.email}
+            onChange={(e) => setpatient({ ...patient, email: e.target.value })}
             type="text"
             required
-            placeholder="categoryId"
+            placeholder="email"
           />
         </Form.Group>
 
         <Form.Group className="mb-3">
           <Form.Control
-            value={medicine.price}
-            onChange={(e) => setMedicines({ ...medicine, price: e.target.value })}
+            value={patient.password}
+            onChange={(e) => setpatient({ ...patient, password: e.target.value })}
             type="text"
             required
-            placeholder="medicine price"
+            placeholder="password"
           />
         </Form.Group>
         
         <Form.Group className="mb-3">
           <Form.Control
-            value={medicine.expirationDate}
-            onChange={(e) => setMedicines({ ...medicine, expirationDate: e.target.value })}
+            value={patient.Phone}
+            onChange={(e) => setpatient({ ...patient, Phone: e.target.value })}
             type="text"
-            required
-            placeholder="medicine expirationDate"
+            
+            placeholder="Phone"
           />
         </Form.Group>
         
 
-        <Form.Group className="mb-3">
-          <textarea
-            className="form-control"
-            placeholder="Description"
-            value={medicine.description}
-            required
-            onChange={(e) =>
-              setMedicines({ ...medicine, description: e.target.value })
-            }
-            rows={5}></textarea>
-        </Form.Group>
 
         {/* <Form.Group className="mb-3">
           <input type="file" className="form-control" ref={image} required />
         </Form.Group> */}
 
         <Button className="btn btn-dark w-100" variant="primary" type="submit">
-          Add New medicine
+          Add New Patient
         </Button>
       </Form>
     </div>
   );
 };
 
-export default AddMedicine;
+export default AddPatient;

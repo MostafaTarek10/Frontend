@@ -51,59 +51,6 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const UpdateMedicine = () => {
-  // const auth = getAuthUser();
-  // let { id } = useParams();
-  // const [medicine, setMedicines] = useState({
-  //   name: "",
-  //   description: "",
-  //   price: "",
-  //   expirationDate: "",
-  //   categoryId : "",
-  //   err: "",
-  //   loading: false,
-  //   success: null,
-  // });
-
-  // // const image = useRef(null);
-
-  // const createMedicine = (e,id) => {
-  //   e.preventDefault();
-
-  //   setMedicines({ ...medicine, loading: true });
-
-
-  //   axios
-  //     .put(`http://localhost:4000/admin/deleteInstructor/`+ id, {
-  //       name: medicine.name,
-  //       description: medicine.description,
-  //       price: medicine.price,
-  //       expirationDate: medicine.expirationDate,
-  //       categoryId : medicine.categoryId,
-  //     })
-  //     .then((resp) => {
-  //       setMedicines({
-  //         name: "",
-  //         description: "",
-  //         price:"",
-  //         expirationDate:"",
-  //         categoryId : "",
-  //         err: null,
-  //         loading: false,
-  //         success: "medicine Created Successfully !",
-  //       });
-  //       // image.current.value = null;
-  //     })
-  //     .catch((err) => {
-  //       setMedicines({
-  //         ...medicine,
-  //         loading: false,
-  //         success: null,
-  //         err: "Something went wrong, please try again later !",
-  //       });
-  //     });
-  // };
-
-
     let { id } = useParams();
     const auth = getAuthUser();
     const [medicine, setmedicine] = useState({
