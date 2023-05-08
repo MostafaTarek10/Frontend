@@ -47,7 +47,7 @@ const ManageCategories = () => {
             </td>
             <td>
               <Link className="btn btn-sm btn-danger">Delete</Link>
-              <Link to={"/"} className="btn btn-sm btn-primary mx-5">
+              <Link to={"Update"} className="btn btn-sm btn-primary mx-5">
                 Update
               </Link>
               <Link to={"show"} className="btn btn-sm btn-info">

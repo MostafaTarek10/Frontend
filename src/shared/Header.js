@@ -41,7 +41,7 @@ const Header = () => {
 
             {auth && auth.type === 1 && (
               <>
-                <Link className="nav-link" to={"/"}>
+                <Link className="nav-link" to={"/home"}>
                   Medicine App
                 </Link>
                 <Link to={"/Manage-Cat"} className="nav-link">
@@ -49,9 +49,6 @@ const Header = () => {
                 </Link>
                 <Link to={"/manage-medicine"} className="nav-link">
                   Manage Medicine
-                </Link>
-                <Link to={"/Manage-Patient"} className="nav-link">
-                  Manage Patient
                 </Link>
                 <Link to={"/Manage-Request"} className="nav-link">
                   Manage Request
