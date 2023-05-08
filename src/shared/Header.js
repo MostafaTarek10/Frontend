@@ -4,23 +4,29 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import "../Style/Header.css";
+import { removeAuthUser, getAuthUser } from "../helper/Storage";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  let Logout = () => {
-    <div>Logout</div>;
+  const navigate = useNavigate();
+  const auth = getAuthUser();
+  const Logout = () => {
+    removeAuthUser();
+    navigate("/");
   };
+
   return (
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand>
-            <Link to={"/"} className="nav-link">
-              Medicine categorize
+            <Link className="nav-link" to={"/"}>
+              Medicine App
             </Link>
           </Navbar.Brand>
           <Nav className="me-auto">
-            {/* <Link to={"/"} className="nav-link">
-              Medicine list
+            {/* <Link className="nav-link" to={"/"}>
+              List Movies
             </Link> */}
             <Link to={"/login"} className="nav-link">
               Login
@@ -34,12 +40,11 @@ const Header = () => {
             <Link to={"/manage-medicine"} className="nav-link">
               Manage Medicine
             </Link>
-            {/* <Link to={"/Manage-Patient"} className="nav-link">
-              Manage Patient
-            </Link> */}
           </Nav>
-          <Nav className="logout">
-            <Nav.Link onClick={Logout}>Logout</Nav.Link>
+
+          <Nav className="ms-auto">
+            {/* Authenticated Routes  */}
+            {auth && <Nav.Link onClick={Logout}>Logout</Nav.Link>}
           </Nav>
         </Container>
       </Navbar>
@@ -48,3 +53,55 @@ const Header = () => {
 };
 
 export default Header;
+
+// ==========================================
+// import React from "react";
+// import Container from "react-bootstrap/Container";
+// import Nav from "react-bootstrap/Nav";
+// import Navbar from "react-bootstrap/Navbar";
+// import { Link } from "react-router-dom";
+// import "../Style/Header.css";
+
+// const Header = () => {
+//   let Logout = () => {
+//     <div>Logout</div>;
+//   };
+//   return (
+//     <>
+//       <Navbar bg="dark" variant="dark">
+//         <Container>
+//           <Navbar.Brand>
+//             <Link to={"/"} className="nav-link">
+//               Medicine categorize
+//             </Link>
+//           </Navbar.Brand>
+//           <Nav className="me-auto">
+//             {/* <Link to={"/"} className="nav-link">
+//               Medicine list
+//             </Link> */}
+//             <Link to={"/login"} className="nav-link">
+//               Login
+//             </Link>
+//             <Link to={"/register"} className="nav-link">
+//               Register
+//             </Link>
+//             <Link to={"/Manage-Cat"} className="nav-link">
+//               ManageCategories
+//             </Link>
+//             <Link to={"/manage-medicine"} className="nav-link">
+//               Manage Medicine
+//             </Link>
+//             <Link to={"/Manage-Patient"} className="nav-link">
+//               Manage Patient
+//             </Link>
+//           </Nav>
+//           <Nav className="logout">
+//             <Nav.Link onClick={Logout}>Logout</Nav.Link>
+//           </Nav>
+//         </Container>
+//       </Navbar>
+//     </>
+//   );
+// };
+
+// export default Header;
