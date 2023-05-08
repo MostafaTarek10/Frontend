@@ -20,13 +20,14 @@ const ManageCategories = () => {
         This is a alert—check it out!
       </Alert>
 
-      <Table striped bordered hover>
+      <Table striped bordered hover variant="dark">
         <thead>
           <tr>
             <th>#</th>
             <th>Image</th>
             <th>Categorie Name</th>
             <th>Description</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -46,7 +47,7 @@ const ManageCategories = () => {
             </td>
             <td>
               <Link className="btn btn-sm btn-danger">Delete</Link>
-              <Link to={"Update"} className="btn btn-sm btn-primary mx-5">
+              <Link to={"/"} className="btn btn-sm btn-primary mx-5">
                 Update
               </Link>
               <Link to={"show"} className="btn btn-sm btn-info">

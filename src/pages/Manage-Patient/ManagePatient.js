@@ -15,11 +15,10 @@ const ManagePatient = () => {
         </Link>
       </div>
 
-      <Table striped bordered hover size="sm">
+      <Table striped bordered hover size="sm" variant="dark">
         <thead>
           <tr>
             <th>#</th>
-            <th>Image</th>
             <th>Patient Name</th>
             <th>Description</th>
             <th>Action</th>
@@ -28,13 +27,6 @@ const ManagePatient = () => {
         <tbody>
           <tr>
             <td>1</td>
-            <td>
-              <img
-                src="https://picsum.photos/200"
-                alt="alfd"
-                className="image-avatar"
-              />
-            </td>
             <td>ahmed</td>
             <td>have lkas asfas daflfai asfljlf</td>
             <td>
@@ -51,13 +43,6 @@ const ManagePatient = () => {
           </tr>
           <tr>
             <td>2</td>
-            <td>
-              <img
-                src="https://picsum.photos/200"
-                alt="alfd"
-                className="image-avatar"
-              />
-            </td>
             <td>shehab</td>
             <td>have lkas asfas daflfai asfljlf</td>
             <td>
@@ -74,13 +59,6 @@ const ManagePatient = () => {
           </tr>{" "}
           <tr>
             <td>3</td>
-            <td>
-              <img
-                src="https://picsum.photos/200"
-                alt="alfd"
-                className="image-avatar"
-              />
-            </td>
             <td>omer</td>
             <td>have lkas asfas daflfai asfljlf</td>
             <td>

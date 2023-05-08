@@ -28,7 +28,7 @@
 }
 
 /* START LANDING */
-.landing {
+.landing{
     background-image: url(../Home/image/layout.svg);
     background-size: cover;
     height: calc(100vh - 64px);

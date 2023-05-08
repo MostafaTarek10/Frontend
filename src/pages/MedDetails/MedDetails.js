@@ -3,10 +3,11 @@ import "../../Style/MedDetails.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
+import { getAuthUser } from "../../helper/Storage";
 
 const MedDetails = () => {
   let { id } = useParams();
-  // const auth = getAuthUser();
+  const Auth = getAuthUser();
   const [Medicine, setMedicine] = useState({
     loading: true,
     result: null,
@@ -33,8 +34,51 @@ const MedDetails = () => {
         });
       });
   }, []);
+
+  //Start REQUEST FOR A MEDICINE
+  const [request, setRequest] = useState({
+    err: "",
+    success: "",
+    loading: false,
+    success: null,
+    Medicine_id: "",
+  });
+
+  const requestMedicine = (id) => {
+    axios
+      .post(
+        "http://localhost:4000/patient/request",
+        {
+          meds_id: id,
+        },
+        {
+          headers: {
+            tokens: Auth.tokens,
+          },
+        }
+      )
+      .then((resp) => {
+        setRequest({
+          ...request,
+          err: null,
+          loading: true,
+          success: "Requested Successfully !",
+        });
+      })
+      .catch((err) => {
+        setRequest({
+          ...request,
+          loading: true,
+          success: null,
+          err: "Something went wrong, please try again later !",
+        });
+      });
+  };
+  //End REQUEST FOR A MEDICINE
+
   return (
     <div className="Med-Details-container p-5">
+      <h1 className="Medicine-Details">Medicine Details</h1>
       {Medicine.loading === true && (
         <div className="text-center">
           <Spinner animation="border" role="status">
@@ -51,6 +95,16 @@ const MedDetails = () => {
             {/* <button className="Buy">Buy Now</button> */}
             <p>expirationDate: {Medicine.result[0].expirationDate}</p>
           </div>
+          <button
+            className="btn btn-dark ms-2"
+            variant="primary"
+            disabled={request.loading === true}
+            onClick={(e) => {
+              requestMedicine(id);
+            }}
+          >
+            Request Book
+          </button>
         </>
       )}
     </div>

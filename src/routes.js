@@ -17,6 +17,8 @@ import ReadPatient from "./pages/Manage-Patient/ReadPatient";
 import UpdatePatient from "./pages/Manage-Patient/UpdatePatient";
 import Guest from "./middleware/Guest";
 import Admin from "./middleware/Admin";
+import ManageRequest from "./pages/ManageRequest/ManageRequest";
+import LayOutPage from "./pages/LayOutPage/LayOutPage";
 
 export const routes = createBrowserRouter([
   {
@@ -25,8 +27,13 @@ export const routes = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <LayOutPage />,
+      },
+      {
+        path: "/home",
         element: <Home />,
       },
+
       // {
       //   path: ":id",
       //   element: <MedicineDetails/>,
@@ -50,10 +57,10 @@ export const routes = createBrowserRouter([
         path: ":id",
         element: <MedDetails />,
       },
-      // {
-      //   path: ":id",
-      //   element: <CategorieDetails />,
-      // },
+      {
+        path: ":id",
+        element: <CategorieDetails />,
+      },
 
       // {
       //   path: "MedicineDetails",
@@ -131,6 +138,16 @@ export const routes = createBrowserRouter([
           //   path: "delete",
           //   element: <DeletePatient />,
           // },
+        ],
+      },
+      {
+        path: "/Manage-Request",
+        element: <Admin />,
+        children: [
+          {
+            path: "",
+            element: <ManageRequest />,
+          },
         ],
       },
     ],

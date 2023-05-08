@@ -20,7 +20,7 @@ const ManageMedicine = () => {
         This is simple Alert
       </Alert>
 
-      <Table striped bordered hover>
+      <Table striped bordered hover variant="dark">
         <thead>
           <tr>
             <th>#</th>

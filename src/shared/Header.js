@@ -19,11 +19,7 @@ const Header = () => {
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand>
-            <Link className="nav-link" to={"/"}>
-              Medicine App
-            </Link>
-          </Navbar.Brand>
+          <Navbar.Brand></Navbar.Brand>
           <Nav className="me-auto">
             {/* <Link className="nav-link" to={"/"}>
               List Movies
@@ -45,6 +41,9 @@ const Header = () => {
 
             {auth && auth.type === 1 && (
               <>
+                <Link className="nav-link" to={"/"}>
+                  Medicine App
+                </Link>
                 <Link to={"/Manage-Cat"} className="nav-link">
                   ManageCategories
                 </Link>
@@ -54,13 +53,23 @@ const Header = () => {
                 <Link to={"/Manage-Patient"} className="nav-link">
                   Manage Patient
                 </Link>
+                <Link to={"/Manage-Request"} className="nav-link">
+                  Manage Request
+                </Link>
+              </>
+            )}
+            {auth && auth.type === 0 && (
+              <>
+                <Link className="nav-link" to={"/home"}>
+                  Medicine App
+                </Link>{" "}
               </>
             )}
           </Nav>
 
           <Nav className="ms-auto">
             {/* Authenticated Routes  */}
-            {auth && <Nav.Link onClick={Logout}>Logout</Nav.Link>}
+            {auth && <Nav.Link onClick={Logout}>Log out</Nav.Link>}
           </Nav>
         </Container>
       </Navbar>

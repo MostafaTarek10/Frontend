@@ -1,33 +1,56 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import Spinner from "react-bootstrap/Spinner";
 import "../../Style/ReadPatient.css";
 
 const ReadPatient = () => {
+  let { id } = useParams();
+  // const auth = getAuthUser();
+  const [Patient, setPatient] = useState({
+    loading: true,
+    result: null,
+    err: null,
+    reload: 0,
+  });
+  useEffect(() => {
+    setPatient({ ...Patient, loading: true });
+    axios
+      .get("http://localhost:4000/admin/listPatient/" + id)
+      .then((resp) => {
+        setPatient({
+          ...Patient,
+          result: resp.data,
+          loading: false,
+          err: null,
+        });
+      })
+      .catch((err) => {
+        setPatient({
+          ...Patient,
+          loading: false,
+          err: " something went wrong, please try again later ! ",
+        });
+      });
+  }, []);
   return (
     <div className="Med-Details-container p-5">
-      <div className="row">
-        <div className="col-4">
-          <img
-            className="Med-image"
-            src="https://picsum.photos/200/300"
-            alt=""
-          />
+      {Patient.loading === true && (
+        <div className="text-center">
+          <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
         </div>
-        <div className="col-8">
-          <h3>Patient Name</h3>
-          <p className="Details">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </div>
-      </div>
-         
+      )}
+      {Patient.loading === false && Patient.err == null && (
+        <>
+          <div className="row">
+            <h3> {Patient.result.name} </h3>
+            <p className="Details">{Patient.result.description}</p>
+          </div>
+        </>
+      )}
     </div>
   );
 };
-
 export default ReadPatient;
