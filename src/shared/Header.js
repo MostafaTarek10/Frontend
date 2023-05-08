@@ -28,34 +28,18 @@ const Header = () => {
             {/* <Link className="nav-link" to={"/"}>
               List Movies
             </Link> */}
-
-            {/* unAuthenticated Route  */}
-            {!auth && (
-              <>
-                <Link className="nav-link" to={"/login"}>
-                  Login
-                </Link>
-                <Link className="nav-link" to={"/register"}>
-                  Register
-                </Link>
-              </>
-            )}
-
-            {/* Admin Routes  */}
-
-            {auth && auth.type === 1 && (
-              <>
-                <Link to={"/Manage-Cat"} className="nav-link">
-                  ManageCategories
-                </Link>
-                <Link to={"/manage-medicine"} className="nav-link">
-                  Manage Medicine
-                </Link>
-                <Link to={"/Manage-Patient"} className="nav-link">
-                  Manage Patient
-                </Link>
-              </>
-            )}
+            <Link to={"/login"} className="nav-link">
+              Login
+            </Link>
+            <Link to={"/register"} className="nav-link">
+              Register
+            </Link>
+            <Link to={"/Manage-Cat"} className="nav-link">
+              ManageCategories
+            </Link>
+            <Link to={"/manage-medicine"} className="nav-link">
+              Manage Medicine
+            </Link>
           </Nav>
 
           <Nav className="ms-auto">

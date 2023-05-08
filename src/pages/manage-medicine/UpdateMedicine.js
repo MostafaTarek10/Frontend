@@ -174,10 +174,6 @@ const UpdateMedicine = () => {
             rows={5}></textarea>
         </Form.Group>
 
-        {/* <Form.Group className="mb-3">
-          <input type="file" className="form-control" ref={image} required />
-        </Form.Group> */}
-
         <Button className="btn btn-dark w-100" variant="primary" type="submit">
          Update Medicine
         </Button>

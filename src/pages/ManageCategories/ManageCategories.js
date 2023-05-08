@@ -156,8 +156,8 @@ const ManageCategory = () => {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>#</th>
-            <th>category</th>
+            {/* <th>#</th> */}
+            <th>category name</th>
             <th>category id</th>
             <th>Description</th>
             <th>Actions</th>
