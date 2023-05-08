@@ -11,10 +11,10 @@ import AddCategories from "./pages/ManageCategories/AddCategories";
 import UpdateCategories from "./pages/ManageCategories/UpdateCategories";
 import MedDetails from "./pages/MedDetails/MedDetails";
 import CategorieDetails from "./pages/CategorieDetails/CategorieDetails";
-import ManagePatient from "./pages/Manage-Patient/ManagePatient";
-import CrearePatient from "./pages/Manage-Patient/CrearePatient";
-import ReadPatient from "./pages/Manage-Patient/ReadPatient";
-import UpdatePatient from "./pages/Manage-Patient/UpdatePatient";
+// import ManagePatient from "./pages/Manage-Patient/ManagePatient";
+// import CrearePatient from "./pages/Manage-Patient/CrearePatient";
+// import ReadPatient from "./pages/Manage-Patient/ReadPatient";
+// import UpdatePatient from "./pages/Manage-Patient/UpdatePatient";
 
 export const routes = createBrowserRouter([
   {
@@ -92,35 +92,35 @@ export const routes = createBrowserRouter([
           },
         ],
       },
-      {
-        path: "/Manage-Patient",
-        children: [
-          {
-            path: "",
-            element: <ManagePatient />,
-          },
-          {
-            path: "Create",
-            element: <CrearePatient />,
-          },
-          {
-            path: "show",
-            element: <ReadPatient />,
-          },
-          {
-            path: "Update",
-            element: <UpdatePatient />,
-          },
-          {
-            path: "add",
-            element: <CrearePatient />,
-          },
-          // {
-          //   path: "delete",
-          //   element: <DeletePatient />,
-          // },
-        ],
-      },
+      // {
+      //   path: "/Manage-Patient",
+      //   children: [
+      //     {
+      //       path: "",
+      //       element: <ManagePatient />,
+      //     },
+      //     {
+      //       path: "Create",
+      //       element: <CrearePatient />,
+      //     },
+      //     {
+      //       path: "show",
+      //       element: <ReadPatient />,
+      //     },
+      //     {
+      //       path: "Update",
+      //       element: <UpdatePatient />,
+      //     },
+      //     {
+      //       path: "add",
+      //       element: <CrearePatient />,
+      //     },
+      //     // {
+      //     //   path: "delete",
+      //     //   element: <DeletePatient />,
+      //     // },
+      //   ],
+      // },
     ],
   },
   {

@@ -44,6 +44,7 @@
 
 
 
+
 import React, { useState, useRef, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -53,9 +54,6 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const UpdateCategory = () => {
-
-
-
     let { id } = useParams();
     const auth = getAuthUser();
     const [Category, setCategory] = useState({
@@ -136,23 +134,42 @@ const UpdateCategory = () => {
             onChange={(e) => setCategory({ ...Category, id: e.target.value })}
             type="text"
             required
-            placeholder="id"
+            placeholder="categoryId"
           />
-        </Form.Group>
-        
-        <Form.Group className="mb-3">
-          <textarea
-            className="form-control"
-            value={Category.description}
-            onChange={(e) =>setCategory({ ...Category, description: e.target.value }) }
-            required
-            placeholder="Description"
-            rows={5}></textarea>
         </Form.Group>
 
         {/* <Form.Group className="mb-3">
-          <input type="file" className="form-control" ref={image} required />
+          <Form.Control
+            value={Category.price}
+            onChange={(e) => setCategory({ ...Category, price: e.target.value })}
+            type="text"
+            required
+            placeholder="Category price"
+          />
         </Form.Group> */}
+        
+        {/* <Form.Group className="mb-3">
+          <Form.Control
+            value={Category.expirationDate}
+            onChange={(e) => setCategory({ ...Category, expirationDate: e.target.value })}
+            type="text"
+            required
+            placeholder="Category expirationDate"
+          />
+        </Form.Group> */}
+        
+
+        <Form.Group className="mb-3">
+          <textarea
+            className="form-control"
+            placeholder="Description"
+            value={Category.description}
+            required
+            onChange={(e) =>
+              setCategory({ ...Category, description: e.target.value })
+            }
+            rows={5}></textarea>
+        </Form.Group>
 
         <Button className="btn btn-dark w-100" variant="primary" type="submit">
          Update Category

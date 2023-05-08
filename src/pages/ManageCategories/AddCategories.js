@@ -157,3 +157,6 @@ const AddCategories = () => {
 };
 
 export default AddCategories;
+
+
+// auto increment for id 
