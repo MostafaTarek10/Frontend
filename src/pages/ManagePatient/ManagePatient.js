@@ -46,58 +46,60 @@ const ManagePatient = () => {
       .catch((err) => {});
   };
   return (
-    <div className="manage-medicine p-5">
-      <div className="header d-flex justify-content-between mb-5">
-        <h3 className="text-center ">Manage Patient</h3>
-        <Link to={"add"} className="btn btn-success">
-          +Add New Patient
-        </Link>
-      </div>
+    <div className="color">
+      <div className="manage-medicine p-5">
+        <div className="header d-flex justify-content-between mb-5">
+          <h3 className="text-center ">Manage Patient</h3>
+          <Link to={"add"} className="btn btn-success">
+            +Add New Patient
+          </Link>
+        </div>
 
-      {/* <Alert variant="danger" className="p-2">
-          This is simple Alert
-        </Alert>
-        <Alert variant="success" className="p-2">
-          This is simple Alert
-        </Alert> */}
+        {/* <Alert variant="danger" className="p-2">
+        This is simple Alert
+      </Alert>
+      <Alert variant="success" className="p-2">
+        This is simple Alert
+      </Alert> */}
 
-      <Table striped bordered hover variant="dark">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th> Patient Name</th>
-            <th>Phone Number</th>
-            <th>Email</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Patient.results.map((Patient) => (
-            <tr key={Patient.id}>
-              <td>{Patient.id}</td>
-              <td>{Patient.name}</td>
-              <td> {Patient.phone}</td>
-              <td> {Patient.email}</td>
-              <td>
-                <button
-                  className="btn btn-sm btn-danger"
-                  onClick={(e) => {
-                    deletePatient(Patient.id);
-                  }}
-                >
-                  Delete
-                </button>
-                <Link
-                  to={"" + Patient.id}
-                  className="btn btn-sm btn-primary mx-2"
-                >
-                  Update
-                </Link>
-              </td>
+        <Table striped bordered hover variant="dark">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th> Patient Name</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {Patient.results.map((Patient) => (
+              <tr key={Patient.id}>
+                <td>{Patient.id}</td>
+                <td>{Patient.name}</td>
+                <td> {Patient.phone}</td>
+                <td> {Patient.email}</td>
+                <td>
+                  <button
+                    className="btn btn-sm btn-danger"
+                    onClick={(e) => {
+                      deletePatient(Patient.id);
+                    }}
+                  >
+                    Delete
+                  </button>
+                  <Link
+                    to={"" + Patient.id}
+                    className="btn btn-sm btn-primary mx-2"
+                  >
+                    Update
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
     </div>
   );
 };

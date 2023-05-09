@@ -46,61 +46,64 @@ const ManageMedicine = () => {
       .catch((err) => {});
   };
   return (
-    <div className="manage-medicine p-5">
-      <div className="header d-flex justify-content-between mb-5">
-        <h3 className="text-center ">Manage Medicine</h3>
-        <Link to={"add"} className="btn btn-success">
-          +Add New Medicine
-        </Link>
-      </div>
+    <div className="color">
+      {" "}
+      <div className="manage-medicine p-5">
+        <div className="header d-flex justify-content-between mb-5">
+          <h3 className="text-center ">Manage Medicine</h3>
+          <Link to={"add"} className="btn btn-success">
+            +Add New Medicine
+          </Link>
+        </div>
 
-      {/* <Alert variant="danger" className="p-2">
-        This is simple Alert
-      </Alert>
-      <Alert variant="success" className="p-2">
-        This is simple Alert
-      </Alert> */}
+        {/* <Alert variant="danger" className="p-2">
+      This is simple Alert
+    </Alert>
+    <Alert variant="success" className="p-2">
+      This is simple Alert
+    </Alert> */}
 
-      <Table striped bordered hover variant="dark">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Category</th>
-            <th>Medicine name</th>
-            <th>Description</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {medicines.results.map((medicines) => (
-            <tr key={medicines.id}>
-              <td>{medicines.id}</td>
-              <td>{medicines.categoryId}</td>
-              <td>{medicines.name}</td>
-              <td> {medicines.description}</td>
-              <td>
-                <button
-                  className="btn btn-sm btn-danger"
-                  onClick={(e) => {
-                    deleteMedicines(medicines.id);
-                  }}
-                >
-                  Delete
-                </button>
-                <Link
-                  to={"" + medicines.id}
-                  className="btn btn-sm btn-primary mx-2"
-                >
-                  Update
-                </Link>
-                <Link to={"/" + medicines.id} className="btn btn-sm btn-info">
-                  show
-                </Link>
-              </td>
+        <Table striped bordered hover variant="dark">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Category</th>
+              <th>Medicine name</th>
+              <th>Description</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {medicines.results.map((medicines) => (
+              <tr key={medicines.id}>
+                <td>{medicines.id}</td>
+                <td>{medicines.categoryId}</td>
+                <td>{medicines.name}</td>
+                <td> {medicines.description}</td>
+                <td>
+                  <button
+                    className="btn btn-sm btn-danger"
+                    onClick={(e) => {
+                      deleteMedicines(medicines.id);
+                    }}
+                  >
+                    Delete
+                  </button>
+                  <Link
+                    to={"" + medicines.id}
+                    className="btn btn-sm btn-primary mx-2"
+                  >
+                    Update
+                  </Link>
+                  <Link to={"/" + medicines.id} className="btn btn-sm btn-info">
+                    show
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
     </div>
   );
 };

@@ -40,72 +40,77 @@ const Register = () => {
       });
   };
   return (
-    <div className="login-container">
-      <h1>Register Form</h1>
-      {register.err.map((error, index) => (
-        <Alert key={index} variant={"danger"}>
-          {" "}
-          {error.msg}{" "}
-        </Alert>
-      ))}
+    <div className="color">
+      {" "}
+      <div className="login-container">
+        <h1>Register Form</h1>
+        {register.err.map((error, index) => (
+          <Alert key={index} variant={"danger"}>
+            {" "}
+            {error.msg}{" "}
+          </Alert>
+        ))}
 
-      <Form onSubmit={RegisterFun}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            type="name"
-            placeholder="Please Enter Your Name"
-            value={register.name}
-            onChange={(e) => setRegister({ ...register, name: e.target.value })}
-            required
-          />
-        </Form.Group>
+        <Form onSubmit={RegisterFun}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              type="name"
+              placeholder="Please Enter Your Name"
+              value={register.name}
+              onChange={(e) =>
+                setRegister({ ...register, name: e.target.value })
+              }
+              required
+            />
+          </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Please Enter Your Email"
-            value={register.email}
-            onChange={(e) =>
-              setRegister({ ...register, email: e.target.value })
-            }
-            required
-          />
-        </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Please Enter Your Email"
+              value={register.email}
+              onChange={(e) =>
+                setRegister({ ...register, email: e.target.value })
+              }
+              required
+            />
+          </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Please Enter Your Password"
-            value={register.password}
-            onChange={(e) =>
-              setRegister({ ...register, password: e.target.value })
-            }
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicNumber">
-          <Form.Label>Phone Number</Form.Label>
-          <Form.Control
-            type="number"
-            placeholder="Please Enter Your Phone-Number"
-            value={register.number}
-            onChange={(e) =>
-              setRegister({ ...register, number: e.target.value })
-            }
-            required
-          />
-        </Form.Group>
-        <Button
-          variant="primary"
-          type="submit"
-          disabled={register.loading === true}
-        >
-          Register
-        </Button>
-      </Form>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Please Enter Your Password"
+              value={register.password}
+              onChange={(e) =>
+                setRegister({ ...register, password: e.target.value })
+              }
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicNumber">
+            <Form.Label>Phone Number</Form.Label>
+            <Form.Control
+              type="number"
+              placeholder="Please Enter Your Phone-Number"
+              value={register.number}
+              onChange={(e) =>
+                setRegister({ ...register, number: e.target.value })
+              }
+              required
+            />
+          </Form.Group>
+          <Button
+            variant="primary"
+            type="submit"
+            disabled={register.loading === true}
+          >
+            Register
+          </Button>
+        </Form>
+      </div>
     </div>
   );
 };

@@ -79,62 +79,64 @@ const ManageRequest = () => {
       });
   };
   return (
-    <div className="manage-medicines p-5">
-      <div className="header-table mb-4">
-        <h3 className="text-center">View Requests</h3>
-      </div>
+    <div className="color">
+      <div className="manage-medicines p-5">
+        <div className="header-table mb-4">
+          <h3 className="text-center">View Requests</h3>
+        </div>
 
-      {requests.loading === false &&
-        requests.err == null &&
-        requests.results.length === 0 && (
-          <Alert variant="info" className="p-1">
-            No Requests Yet!
+        {requests.loading === false &&
+          requests.err == null &&
+          requests.results.length === 0 && (
+            <Alert variant="info" className="p-1">
+              No Requests Yet!
+            </Alert>
+          )}
+
+        {requests.loading === false && requests.err != null && (
+          <Alert variant="danger" className="p-1">
+            Error, please try again later
           </Alert>
         )}
 
-      {requests.loading === false && requests.err != null && (
-        <Alert variant="danger" className="p-1">
-          Error, please try again later
-        </Alert>
-      )}
-
-      <Table striped bordered hover size="sm" variant="dark">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>User-ID</th>
-            <th>Mediine-ID</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {requests.results.map((request) => (
-            <tr key={request.id}>
-              <td>{request.id}</td>
-              <td>{request.user_id}</td>
-              <td>{request.medicines_id}</td>
-              <td>
-                <button
-                  className="btn btn-sm mx-2 btn-success"
-                  onClick={(e) => {
-                    acceptRequest(request.id);
-                  }}
-                >
-                  Accept
-                </button>
-                <button
-                  className="btn btn-sm btn-danger"
-                  onClick={(e) => {
-                    declineRequest(request.id);
-                  }}
-                >
-                  Decline
-                </button>
-              </td>
+        <Table striped bordered hover size="sm" variant="dark">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>User-ID</th>
+              <th>Mediine-ID</th>
+              <th>Action</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {requests.results.map((request) => (
+              <tr key={request.id}>
+                <td>{request.id}</td>
+                <td>{request.user_id}</td>
+                <td>{request.medicines_id}</td>
+                <td>
+                  <button
+                    className="btn btn-sm mx-2 btn-success"
+                    onClick={(e) => {
+                      acceptRequest(request.id);
+                    }}
+                  >
+                    Accept
+                  </button>
+                  <button
+                    className="btn btn-sm btn-danger"
+                    onClick={(e) => {
+                      declineRequest(request.id);
+                    }}
+                  >
+                    Decline
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
     </div>
   );
 };

@@ -136,60 +136,63 @@ const ManageCategory = () => {
       .catch((err) => {});
   };
   return (
-    <div className="manage-category p-5">
-      <div className="header d-flex justify-content-between mb-5">
-        <h3 className="text-center ">Manage category</h3>
-        <Link to={"add"} className="btn btn-success">
-          +Add New category
-        </Link>
-      </div>
+    <div className="color">
+      {" "}
+      <div className="manage-category p-5">
+        <div className="header d-flex justify-content-between mb-5">
+          <h3 className="text-center ">Manage category</h3>
+          <Link to={"add"} className="btn btn-success">
+            +Add New category
+          </Link>
+        </div>
 
-      {/* <Alert variant="danger" className="p-2">
-        This is simple Alert
-      </Alert>
-      <Alert variant="success" className="p-2">
-        This is simple Alert
-      </Alert> */}
+        {/* <Alert variant="danger" className="p-2">
+      This is simple Alert
+    </Alert>
+    <Alert variant="success" className="p-2">
+      This is simple Alert
+    </Alert> */}
 
-      <Table striped bordered hover variant="dark">
-        <thead>
-          <tr>
-            {/* <th>#</th> */}
-            <th>category name</th>
-            <th>category id</th>
-            <th>Description</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {category.results.map((category) => (
-            <tr key={category.id}>
-              <td>{category.name}</td>
-              <td>{category.id}</td>
-              <td> {category.description}</td>
-              <td>
-                <button
-                  className="btn btn-sm btn-danger"
-                  onClick={(e) => {
-                    deletecategory(category.id);
-                  }}
-                >
-                  Delete
-                </button>
-                <Link
-                  to={"" + category.id}
-                  className="btn btn-sm btn-primary mx-2"
-                >
-                  Update
-                </Link>
-                {/* <Link to={"/" + category.id} className="btn btn-sm btn-info">
-                  show
-                </Link> */}
-              </td>
+        <Table striped bordered hover variant="dark">
+          <thead>
+            <tr>
+              {/* <th>#</th> */}
+              <th>category name</th>
+              <th>category id</th>
+              <th>Description</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {category.results.map((category) => (
+              <tr key={category.id}>
+                <td>{category.name}</td>
+                <td>{category.id}</td>
+                <td> {category.description}</td>
+                <td>
+                  <button
+                    className="btn btn-sm btn-danger"
+                    onClick={(e) => {
+                      deletecategory(category.id);
+                    }}
+                  >
+                    Delete
+                  </button>
+                  <Link
+                    to={"" + category.id}
+                    className="btn btn-sm btn-primary mx-2"
+                  >
+                    Update
+                  </Link>
+                  {/* <Link to={"/" + category.id} className="btn btn-sm btn-info">
+                show
+              </Link> */}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
     </div>
   );
 };
