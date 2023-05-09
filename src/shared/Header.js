@@ -50,6 +50,9 @@ const Header = () => {
                 <Link to={"/manage-medicine"} className="nav-link">
                   Manage Medicine
                 </Link>
+                <Link to={"/Manage-Patient"} className="nav-link">
+                  Manage Patient
+                </Link>
                 <Link to={"/Manage-Request"} className="nav-link">
                   Manage Request
                 </Link>
@@ -59,6 +62,9 @@ const Header = () => {
               <>
                 <Link className="nav-link" to={"/home"}>
                   Medicine App
+                </Link>{" "}
+                <Link className="nav-link" to={"/search-history"}>
+                  Search History
                 </Link>{" "}
               </>
             )}

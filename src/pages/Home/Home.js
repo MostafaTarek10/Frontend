@@ -7,7 +7,9 @@ import MedicineList from "../../Components/MedicineList";
 import Alert from "react-bootstrap/Alert";
 import "../Home/CategoriesIntegration";
 import CategoriesIntegration from "../Home/CategoriesIntegration";
+import { getAuthUser } from "../../helper/Storage";
 const Home = () => {
+  const Auth = getAuthUser();
   const [Medicine, setMedicines] = useState({
     loading: true,
     results: [],
@@ -20,7 +22,7 @@ const Home = () => {
   useEffect(() => {
     setMedicines({ ...Medicine, loading: true });
     axios
-      .get("http://localhost:4000/admin/search", {
+      .get("http://localhost:4000/patient/search/ " + Auth.id, {
         params: {
           search: search,
         },

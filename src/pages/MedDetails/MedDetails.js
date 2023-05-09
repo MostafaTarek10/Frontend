@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import { getAuthUser } from "../../helper/Storage";
+import Table from "react-bootstrap/Table";
 
 const MedDetails = () => {
   let { id } = useParams();
@@ -89,7 +90,7 @@ const MedDetails = () => {
       {Medicine.loading === false && Medicine.err == null && (
         <>
           <div className="row">
-            <h3> {Medicine.result[0].name} </h3>
+            <h3> Medicine Name: {Medicine.result[0].name} </h3>
             <p className="Details">{Medicine.result[0].description}</p>
             <p className="Price">Price: {Medicine.result[0].price}</p>
             {/* <button className="Buy">Buy Now</button> */}
@@ -103,7 +104,7 @@ const MedDetails = () => {
               requestMedicine(id);
             }}
           >
-            Request Book
+            Request Medicine
           </button>
         </>
       )}
