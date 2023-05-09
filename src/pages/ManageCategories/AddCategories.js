@@ -31,7 +31,7 @@
 //     </Form.Group>
 
 //     <Button variant="primary" type="submit">
-//         Add New Categorie 
+//         Add New Categorie
 //     </Button>
 //     </Form>
 // </div>
@@ -50,7 +50,6 @@ import axios from "axios";
 const AddCategories = () => {
   const auth = getAuthUser();
   const [category, setcategorys] = useState({
-    id: "",
     name: "",
     description: "",
     err: "",
@@ -65,23 +64,18 @@ const AddCategories = () => {
 
     setcategorys({ ...category, loading: true });
 
-
     axios
       .post("http://localhost:4000/admin/createCat", {
-        id : category.id,
         name: category.name,
         description: category.description,
-
-
       })
       .then((resp) => {
         setcategorys({
-            id: "",
-            name: "",
-            description: "",
-            err: null,
-            loading: false,
-            success: "category Created Successfully !",
+          name: "",
+          description: "",
+          err: null,
+          loading: false,
+          success: "category Created Successfully !",
         });
         // image.current.value = null;
       })
@@ -115,23 +109,15 @@ const AddCategories = () => {
         <Form.Group className="mb-3">
           <Form.Control
             value={category.name}
-            onChange={(e) => setcategorys({ ...category, name: e.target.value })}
+            onChange={(e) =>
+              setcategorys({ ...category, name: e.target.value })
+            }
             type="text"
             required
             placeholder="category Name"
           />
         </Form.Group>
-        
-        <Form.Group className="mb-3">
-          <Form.Control
-            value={category.id}
-            onChange={(e) => setcategorys({ ...category, id: e.target.value })}
-            type="text"
-            required
-            placeholder="id"
-          />
-        </Form.Group>
-        
+
         <Form.Group className="mb-3">
           <textarea
             className="form-control"
@@ -141,7 +127,8 @@ const AddCategories = () => {
             onChange={(e) =>
               setcategorys({ ...category, description: e.target.value })
             }
-            rows={5}></textarea>
+            rows={5}
+          ></textarea>
         </Form.Group>
 
         {/* <Form.Group className="mb-3">
@@ -158,5 +145,4 @@ const AddCategories = () => {
 
 export default AddCategories;
 
-
-// auto increment for id 
+// auto increment for id

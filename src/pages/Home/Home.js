@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
-import MedCat from "../../Components/MedCat";
 import "../Home/Home.css";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
 import MedicineList from "../../Components/MedicineList";
 import Alert from "react-bootstrap/Alert";
+import "../Home/CategoriesIntegration";
+import CategoriesIntegration from "../Home/CategoriesIntegration";
+import { getAuthUser } from "../../helper/Storage";
 const Home = () => {
+  const Auth = getAuthUser();
   const [Medicine, setMedicines] = useState({
     loading: true,
     results: [],
@@ -19,7 +22,7 @@ const Home = () => {
   useEffect(() => {
     setMedicines({ ...Medicine, loading: true });
     axios
-      .get("http://localhost:4000/admin/search", {
+      .get("http://localhost:4000/patient/search/ " + Auth.id, {
         params: {
           search: search,
         },
@@ -46,6 +49,8 @@ const Home = () => {
   const searchMedicines = (e) => {
     e.preventDefault();
     setMedicines({ ...Medicine, reload: Medicine.reload + 1 });
+
+    // =============================================
   };
 
   return (
@@ -120,7 +125,7 @@ const Home = () => {
             )}
           {/*  CATEGORIES LIST */}
           <h1 style={{ fontWeight: "bold" }}>Medicine Categories :-</h1>
-          <div className="row">
+          {/* <div className="row">
             <div className="col-xs-6 col-sm-3 med-cat-container">
               <MedCat />
             </div>
@@ -133,15 +138,12 @@ const Home = () => {
             <div className="col-xs-6 col-sm-3 med-cat-container">
               <MedCat />
             </div>
-          </div>
+          </div> */}
+          <CategoriesIntegration />
         </>
       )}
-      ;
-      {/* IF THERE IS AN ERROR
-      {Medicine.loading === false && Medicine.err == null && (
-        <Alert variant={"danger"}>{Medicine.err}</Alert>
-      )} */}
-      ;{/* CONTACT */}
+
+      {/* CONTACT */}
       <div className="contact">
         <div className="main-heading">
           <h2>Contact Us</h2>

@@ -88,14 +88,12 @@
 
 // export default ManageCategories;
 
-
 import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
 import axios from "axios";
 import { getAuthUser } from "../../helper/Storage";
-
 
 const ManageCategory = () => {
   const auth = getAuthUser();
@@ -131,7 +129,7 @@ const ManageCategory = () => {
 
   const deletecategory = (id) => {
     axios
-      .delete("http://localhost:4000/admin/deletcategory/" + id,)
+      .delete("http://localhost:4000/admin/deletcategory/" + id)
       .then((resp) => {
         setcategory({ ...category, reload: category.reload + 1 });
       })
@@ -153,7 +151,7 @@ const ManageCategory = () => {
         This is simple Alert
       </Alert> */}
 
-      <Table striped bordered hover>
+      <Table striped bordered hover variant="dark">
         <thead>
           <tr>
             {/* <th>#</th> */}
@@ -164,31 +162,32 @@ const ManageCategory = () => {
           </tr>
         </thead>
         <tbody>
-          {category.results.map((category) =>(
-          <tr key = {category.id}>
-          <td>{category.name}</td>
-          <td>{category.id}</td>
-          <td> {category.description}</td>
-          <td>
+          {category.results.map((category) => (
+            <tr key={category.id}>
+              <td>{category.name}</td>
+              <td>{category.id}</td>
+              <td> {category.description}</td>
+              <td>
                 <button
                   className="btn btn-sm btn-danger"
-                  onClick={(e) => {deletecategory(category.id);}}>
+                  onClick={(e) => {
+                    deletecategory(category.id);
+                  }}
+                >
                   Delete
                 </button>
                 <Link
                   to={"" + category.id}
-                  className="btn btn-sm btn-primary mx-2">
+                  className="btn btn-sm btn-primary mx-2"
+                >
                   Update
                 </Link>
-                <Link to={"/" + category.id} className="btn btn-sm btn-info">
+                {/* <Link to={"/" + category.id} className="btn btn-sm btn-info">
                   show
-                </Link>
+                </Link> */}
               </td>
-        </tr>
-
-
+            </tr>
           ))}
-
         </tbody>
       </Table>
     </div>
@@ -196,4 +195,3 @@ const ManageCategory = () => {
 };
 
 export default ManageCategory;
-

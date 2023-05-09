@@ -4,48 +4,47 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import { getAuthUser } from "../../helper/Storage";
-import Table from "react-bootstrap/Table";
 
-const MedDetails = () => {
+const PatientDetails = () => {
   let { id } = useParams();
   const Auth = getAuthUser();
-  const [Medicine, setMedicine] = useState({
+  const [patient, setPatient] = useState({
     loading: true,
     result: null,
     err: null,
     reload: 0,
   });
   useEffect(() => {
-    setMedicine({ ...Medicine, loading: true });
+    setPatient({ ...patient, loading: true });
     axios
-      .get("http://localhost:4000/admin/listMed/" + id)
+      .get("http://localhost:4000/admin/listPatient/" + id)
       .then((resp) => {
-        setMedicine({
-          ...Medicine,
+        setPatient({
+          ...patient,
           result: resp.data,
           loading: false,
           err: null,
         });
       })
       .catch((err) => {
-        setMedicine({
-          ...Medicine,
+        setPatient({
+          ...patient,
           loading: false,
           err: " something went wrong, please try again later ! ",
         });
       });
   }, []);
 
-  //Start REQUEST FOR A MEDICINE
+  //Start REQUEST FOR A patient
   const [request, setRequest] = useState({
     err: "",
     success: "",
     loading: false,
     success: null,
-    Medicine_id: "",
+    patient_id: "",
   });
 
-  const requestMedicine = (id) => {
+  const requestpatient = (id) => {
     axios
       .post(
         "http://localhost:4000/patient/request",
@@ -75,36 +74,36 @@ const MedDetails = () => {
         });
       });
   };
-  //End REQUEST FOR A MEDICINE
+  //End REQUEST FOR A patient
 
   return (
     <div className="Med-Details-container p-5">
-      <h1 className="Medicine-Details">Medicine Details</h1>
-      {Medicine.loading === true && (
+      <h1 className="patient-Details">patient Details</h1>
+      {patient.loading === true && (
         <div className="text-center">
           <Spinner animation="border" role="status">
             <span className="visually-hidden">Loading...</span>
           </Spinner>
         </div>
       )}
-      {Medicine.loading === false && Medicine.err == null && (
+      {patient.loading === false && patient.err == null && (
         <>
           <div className="row">
-            <h3> Medicine Name: {Medicine.result[0].name} </h3>
-            <p className="Details">{Medicine.result[0].description}</p>
-            <p className="Price">Price: {Medicine.result[0].price}</p>
+            <h3> {patient.result[0].name} </h3>
+            <p className="Details">{patient.result[0].description}</p>
+            <p className="Price">Price: {patient.result[0].price}</p>
             {/* <button className="Buy">Buy Now</button> */}
-            <p>expirationDate: {Medicine.result[0].expirationDate}</p>
+            <p>expirationDate: {patient.result[0].expirationDate}</p>
           </div>
           <button
             className="btn btn-dark ms-2"
             variant="primary"
             disabled={request.loading === true}
             onClick={(e) => {
-              requestMedicine(id);
+              requestpatient(id);
             }}
           >
-            Request Medicine
+            Request Book
           </button>
         </>
       )}
@@ -112,4 +111,4 @@ const MedDetails = () => {
   );
 };
 
-export default MedDetails;
+export default PatientDetails;

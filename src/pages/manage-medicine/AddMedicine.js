@@ -12,7 +12,7 @@ const AddMedicine = () => {
     description: "",
     price: "",
     expirationDate: "",
-    categoryId : "",
+    categoryId: "",
     err: "",
     loading: false,
     success: null,
@@ -25,22 +25,21 @@ const AddMedicine = () => {
 
     setMedicines({ ...medicine, loading: true });
 
-
     axios
       .post("http://localhost:4000/admin/createMed", {
         name: medicine.name,
         description: medicine.description,
         price: medicine.price,
         expirationDate: medicine.expirationDate,
-        categoryId : medicine.categoryId,
+        categoryId: medicine.categoryId,
       })
       .then((resp) => {
         setMedicines({
           name: "",
           description: "",
-          price:"",
-          expirationDate:"",
-          categoryId : "",
+          price: "",
+          expirationDate: "",
+          categoryId: "",
           err: null,
           loading: false,
           success: "medicine Created Successfully !",
@@ -77,17 +76,21 @@ const AddMedicine = () => {
         <Form.Group className="mb-3">
           <Form.Control
             value={medicine.name}
-            onChange={(e) => setMedicines({ ...medicine, name: e.target.value })}
+            onChange={(e) =>
+              setMedicines({ ...medicine, name: e.target.value })
+            }
             type="text"
             required
             placeholder="medicine Name"
           />
         </Form.Group>
-        
+
         <Form.Group className="mb-3">
           <Form.Control
             value={medicine.categoryId}
-            onChange={(e) => setMedicines({ ...medicine, categoryId: e.target.value })}
+            onChange={(e) =>
+              setMedicines({ ...medicine, categoryId: e.target.value })
+            }
             type="text"
             required
             placeholder="categoryId"
@@ -97,23 +100,26 @@ const AddMedicine = () => {
         <Form.Group className="mb-3">
           <Form.Control
             value={medicine.price}
-            onChange={(e) => setMedicines({ ...medicine, price: e.target.value })}
+            onChange={(e) =>
+              setMedicines({ ...medicine, price: e.target.value })
+            }
             type="text"
             required
             placeholder="medicine price"
           />
         </Form.Group>
-        
+
         <Form.Group className="mb-3">
           <Form.Control
             value={medicine.expirationDate}
-            onChange={(e) => setMedicines({ ...medicine, expirationDate: e.target.value })}
+            onChange={(e) =>
+              setMedicines({ ...medicine, expirationDate: e.target.value })
+            }
             type="text"
             required
             placeholder="medicine expirationDate"
           />
         </Form.Group>
-        
 
         <Form.Group className="mb-3">
           <textarea
@@ -124,7 +130,8 @@ const AddMedicine = () => {
             onChange={(e) =>
               setMedicines({ ...medicine, description: e.target.value })
             }
-            rows={5}></textarea>
+            rows={5}
+          ></textarea>
         </Form.Group>
 
         {/* <Form.Group className="mb-3">
