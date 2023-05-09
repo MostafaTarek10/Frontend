@@ -54,72 +54,83 @@ const AddPatient = () => {
   };
 
   return (
-    <div className="login-container">
-      <h1>Add New patient Form</h1>
+    <div className="color">
+      {" "}
+      <div className="login-container">
+        <h1>Add New patient Form</h1>
 
-      {patient.err && (
-        <Alert variant="danger" className="p-2">
-          {patient.err}
-        </Alert>
-      )}
+        {patient.err && (
+          <Alert variant="danger" className="p-2">
+            {patient.err}
+          </Alert>
+        )}
 
-      {patient.success && (
-        <Alert variant="success" className="p-2">
-          {patient.success}
-        </Alert>
-      )}
+        {patient.success && (
+          <Alert variant="success" className="p-2">
+            {patient.success}
+          </Alert>
+        )}
 
-      <Form onSubmit={createpatient}>
-        <Form.Group className="mb-3">
-          <Form.Control
-            value={patient.name}
-            onChange={(e) => setPatient({ ...patient, name: e.target.value })}
-            type="text"
-            required
-            placeholder="patient Name"
-          />
-        </Form.Group>
+        <Form onSubmit={createpatient}>
+          <Form.Group className="mb-3">
+            <Form.Control
+              value={patient.name}
+              onChange={(e) => setPatient({ ...patient, name: e.target.value })}
+              type="text"
+              required
+              placeholder="patient Name"
+            />
+          </Form.Group>
 
-        <Form.Group className="mb-3">
-          <Form.Control
-            value={patient.phone}
-            onChange={(e) => setPatient({ ...patient, phone: e.target.value })}
-            type="text"
-            required
-            placeholder="Phone Number"
-          />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Control
-            value={patient.password}
-            onChange={(e) =>
-              setPatient({ ...patient, password: e.target.value })
-            }
-            type="password"
-            required
-            placeholder="Password"
-          />
-        </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Control
+              value={patient.phone}
+              onChange={(e) =>
+                setPatient({ ...patient, phone: e.target.value })
+              }
+              type="text"
+              required
+              placeholder="Phone Number"
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Control
+              value={patient.password}
+              onChange={(e) =>
+                setPatient({ ...patient, password: e.target.value })
+              }
+              type="password"
+              required
+              placeholder="Password"
+            />
+          </Form.Group>
 
-        <Form.Group className="mb-3">
-          <textarea
-            className="form-control"
-            placeholder="Email"
-            value={patient.email}
-            required
-            onChange={(e) => setPatient({ ...patient, email: e.target.value })}
-            rows={5}
-          ></textarea>
-        </Form.Group>
+          <Form.Group className="mb-3">
+            <textarea
+              className="form-control"
+              placeholder="Email"
+              value={patient.email}
+              required
+              onChange={(e) =>
+                setPatient({ ...patient, email: e.target.value })
+              }
+              rows={5}
+            ></textarea>
+          </Form.Group>
 
-        {/* <Form.Group className="mb-3">
-            <input type="file" className="form-control" ref={image} required />
-          </Form.Group> */}
+          {/* <Form.Group className="mb-3">
+          <input type="file" className="form-control" ref={image} required />
+        </Form.Group> */}
 
-        <Button className="btn btn-dark w-100" variant="primary" type="submit">
-          Add New patient
-        </Button>
-      </Form>
+          <Button
+            className="btn btn-dark w-100"
+            variant="primary"
+            type="submit"
+          >
+            Add New patient
+          </Button>
+        </Form>
+      </div>
     </div>
   );
 };

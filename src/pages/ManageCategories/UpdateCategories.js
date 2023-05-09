@@ -110,53 +110,56 @@ const UpdateCategory = () => {
   }, [categorie.reload]);
 
   return (
-    <div className="login-container">
-      <h1>Update categorie Form</h1>
+    <div className="color">
+      {" "}
+      <div className="login-container">
+        <h1>Update categorie Form</h1>
 
-      {/* {categorie.err && (
-        <Alert variant="danger" className="p-2">
-          {categorie.err}
-        </Alert>
-      )} */}
+        {/* {categorie.err && (
+      <Alert variant="danger" className="p-2">
+        {categorie.err}
+      </Alert>
+    )} */}
 
-      {categorie.success && (
-        <Alert variant="success" className="p-2">
-          {categorie.success}
-        </Alert>
-      )}
+        {categorie.success && (
+          <Alert variant="success" className="p-2">
+            {categorie.success}
+          </Alert>
+        )}
 
-      <Form onSubmit={updatecategorie} className="text-center py-2">
-        <Form.Group className="mb-3">
-          <Form.Control
-            type="text"
-            placeholder="categorie Name"
-            value={categorie.name}
-            onChange={(e) =>
-              setCategorie({ ...categorie, name: e.target.value })
-            }
-          />
-        </Form.Group>
+        <Form onSubmit={updatecategorie} className="text-center py-2">
+          <Form.Group className="mb-3">
+            <Form.Control
+              type="text"
+              placeholder="categorie Name"
+              value={categorie.name}
+              onChange={(e) =>
+                setCategorie({ ...categorie, name: e.target.value })
+              }
+            />
+          </Form.Group>
 
-        <Form.Group className="mb-3">
-          <textarea
-            className="form-control"
-            placeholder="Description"
-            value={categorie.description}
-            onChange={(e) =>
-              setCategorie({ ...categorie, description: e.target.value })
-            }
-            rows={5}
-          ></textarea>
-        </Form.Group>
-        <Button
-          className="btn btn-dark w-100"
-          variant="primary"
-          type="submit"
-          link
-        >
-          Update categorie
-        </Button>
-      </Form>
+          <Form.Group className="mb-3">
+            <textarea
+              className="form-control"
+              placeholder="Description"
+              value={categorie.description}
+              onChange={(e) =>
+                setCategorie({ ...categorie, description: e.target.value })
+              }
+              rows={5}
+            ></textarea>
+          </Form.Group>
+          <Button
+            className="btn btn-dark w-100"
+            variant="primary"
+            type="submit"
+            link
+          >
+            Update categorie
+          </Button>
+        </Form>
+      </div>
     </div>
   );
 };

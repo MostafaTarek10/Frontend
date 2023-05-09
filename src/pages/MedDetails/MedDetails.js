@@ -78,36 +78,42 @@ const MedDetails = () => {
   //End REQUEST FOR A MEDICINE
 
   return (
-    <div className="Med-Details-container p-5">
-      <h1 className="Medicine-Details">Medicine Details</h1>
-      {Medicine.loading === true && (
-        <div className="text-center">
-          <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
-        </div>
-      )}
-      {Medicine.loading === false && Medicine.err == null && (
-        <>
-          <div className="row">
-            <h3> Medicine Name: {Medicine.result[0].name} </h3>
-            <p className="Details">{Medicine.result[0].description}</p>
-            <p className="Price">Price: {Medicine.result[0].price}</p>
-            {/* <button className="Buy">Buy Now</button> */}
-            <p>expirationDate: {Medicine.result[0].expirationDate}</p>
+    <div className="color">
+      <div className="Med-Details-container p-5 ">
+        <h1 className="Medicine-Details">Medicine Details</h1>
+        {Medicine.loading === true && (
+          <div className="text-center">
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
           </div>
-          <button
-            className="btn btn-dark ms-2"
-            variant="primary"
-            disabled={request.loading === true}
-            onClick={(e) => {
-              requestMedicine(id);
-            }}
-          >
-            Request Medicine
-          </button>
-        </>
-      )}
+        )}
+        {Medicine.loading === false && Medicine.err == null && (
+          <>
+            <div className="bg-black p-5 m-5 ">
+              {" "}
+              <div className="row text-light">
+                <h3> Medicine Name: {Medicine.result[0].name} </h3>
+                <p className="Details">{Medicine.result[0].description}</p>
+                <p className="Price">Price: {Medicine.result[0].price}</p>
+                {/* <button className="Buy">Buy Now</button> */}
+                <p>expirationDate: {Medicine.result[0].expirationDate}</p>
+              </div>
+            </div>
+
+            <button
+              className="btn btn-dark ms-2"
+              variant="primary"
+              disabled={request.loading === true}
+              onClick={(e) => {
+                requestMedicine(id);
+              }}
+            >
+              Request Medicine
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 };
